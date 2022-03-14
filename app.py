@@ -65,7 +65,7 @@ def flaga_dla_ukrainy():
 def FlagaDlaUkrainy():
     return render_template("flaga-dla-ukrainy.html")
 
-@app.route('/brudnopis')
+# @app.route('/brudnopis')
 @app.route('/brudnopis')
 def brudnopis():
     super_heroes = ['Bruce Lee', 'Kubuś Puchatek', 'Kopernik', 'Małysz']
@@ -73,6 +73,33 @@ def brudnopis():
     description = character( chosen_hero).encode('utf-8').decode()
     poem_lines = open_poem()
     return render_template("brudnopis.html", hero=chosen_hero, description=description, poem_lines=poem_lines)
+
+@app.route('/ciekawe-postacie')
+def ciekawe_postacie():
+    lista_ciekawych_postaci = [
+        'Małysz',
+        'Kopernik',
+        'Maria Skłodowska',
+        'Kościuszko',
+        'Kaczor Donald',
+        'Myszka Miki',
+        'Putin',
+        'Stefan Banach',
+        'Pitagoras',
+        'Isaac Newton',
+        'Pudzianowski'
+
+    ]
+    opisy_postaci = []
+    for i in range(3):
+        postac = random.choice(lista_ciekawych_postaci)
+        index = lista_ciekawych_postaci.index(postac)
+        lista_ciekawych_postaci.pop(index)
+        opis_postaci = character(postac)
+        info = [postac, opis_postaci]
+        opisy_postaci.append(info)
+
+    return render_template("ciekawe-postacie.html", opisy_postaci=opisy_postaci)
 
 if __name__=="__main__":
     app.run()
