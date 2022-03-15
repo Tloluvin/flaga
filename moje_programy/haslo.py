@@ -1,7 +1,8 @@
 import string
 import random
 
-def haslo():    
+
+def generator_hasel():
     lowercase = string.ascii_lowercase
     uppercase = string.ascii_uppercase
     digits = string.digits
@@ -20,7 +21,7 @@ def haslo():
         if min_duzych_liter > 0:
             for c in range(min_duzych_liter):
                 wynik += random.sample(uppercase, 1)[0]
-        if  min_cyfr > 0:
+        if min_cyfr > 0:
             for c in range(min_cyfr):
                 wynik += random.sample(digits, 1)[0]
         if min_znakow_specjalnych > 0:
@@ -32,7 +33,8 @@ def haslo():
                 wynik += random.sample(wszystkie_znaki, 1)[0]
 
         haslo = ''.join(random.sample(wynik, len(wynik)))
-        haslo_wynikowe = 'Wygenerowano hasło o długości ' + str(dlugosc_hasla) + ' znaków - ' + str(haslo)
+        haslo_wynikowe = 'Wygenerowano hasło o długości ' + \
+            str(dlugosc_hasla) + ' znaków - ' + str(haslo)
         return haslo_wynikowe
     else:
         return 'Popraw wymagania hasła'
