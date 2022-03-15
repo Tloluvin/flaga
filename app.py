@@ -24,12 +24,6 @@ def xd():
     return render_template("xd.html")
 
 
-@app.route('/test')
-def test():
-    testowanie = test()
-    return render_template("test.html", test=testowanie)
-
-
 @app.route('/haslo')
 def haslo():
     haslo = generator_hasel()
